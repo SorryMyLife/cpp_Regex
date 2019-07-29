@@ -1,4 +1,4 @@
-function runProgram(){
+runProgram(){
 echo -ne "1.getHTML\n2.getIMAGES\n3.getOther\n88.exit\nplease select : "
 read pp
 case $pp in
@@ -6,13 +6,19 @@ case $pp in
 echo "input your link : "
 read u
 curl -o aaa.html $u
-./regex -f aaa.html html
+for ul in $(./regex -f aaa.html html)
+do
+curl -O $ul
+done
 ;;
 2)
 echo "input your link : "
 read u
 curl -o aaa.html $u
-./regex -f aaa.html img
+for ul in $(./regex -f aaa.html img)
+do
+curl -O $ul
+done
 ;;
 3)
 echo "input your link : "
@@ -22,7 +28,10 @@ read patternStr
 echo "input your removeString : "
 read reStr
 curl -o aaa.html $u
-./regex -f aaa.html patternStr reStr;;
+for ul in $(./regex -f aaa.html patternStr reStr;;)
+do
+curl -O $ul
+done
 88)
 exit 0;;
 *)runProgram;;
