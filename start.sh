@@ -6,7 +6,7 @@ case $pp in
 echo "input your link : "
 read u
 curl -o aaa.html $u
-for ul in $(./regex -f aaa.html html)
+for ul in $(./regex -f aaa.html html |cut -f1 -d'"')
 do
 curl -O $ul
 done
@@ -15,7 +15,7 @@ done
 echo "input your link : "
 read u
 curl -o aaa.html $u
-for ul in $(./regex -f aaa.html img)
+for ul in $(./regex -f aaa.html img|cut -f1 -d'"')
 do
 curl -O $ul
 done
@@ -28,7 +28,7 @@ read patternStr
 echo "input your removeString : "
 read reStr
 curl -o aaa.html $u
-for ul in $(./regex -f aaa.html patternStr reStr)
+for ul in $(./regex -f aaa.html patternStr reStr|cut -f1 -d'"')
 do
 curl -O $ul
 done
