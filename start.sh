@@ -28,10 +28,11 @@ read patternStr
 echo "input your removeString : "
 read reStr
 curl -o aaa.html $u
-for ul in $(./regex -f aaa.html patternStr reStr;;)
+for ul in $(./regex -f aaa.html patternStr reStr)
 do
 curl -O $ul
 done
+;;
 88)
 exit 0;;
 *)runProgram;;
